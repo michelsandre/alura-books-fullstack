@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   background-color: #fff;
   border-bottom: 0.2rem solid #fc7222;
-  padding: 0 1.5rem;
+  padding: 1rem 1.5rem;
 `;
 
 const LogoMenuContainer = styled.div`

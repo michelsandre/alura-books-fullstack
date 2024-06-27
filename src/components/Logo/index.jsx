@@ -8,7 +8,6 @@ const LogoContainer = styled.div`
 
 const TextLogo = styled.p`
   font-size: 2rem;
-  margin: 0;
 `;
 
 const Logo = () => {

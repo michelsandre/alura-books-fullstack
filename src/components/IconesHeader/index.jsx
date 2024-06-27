@@ -22,8 +22,8 @@ const IconesHeader = () => {
   const icones = [sacola, perfil];
   return (
     <IconesContainer>
-      {icones.map((icone) => (
-        <IconeContainer>
+      {icones.map((icone, i) => (
+        <IconeContainer key={`icone-${i}`}>
           <ImgContainer src={icone} alt="imagem-icone" />
         </IconeContainer>
       ))}
