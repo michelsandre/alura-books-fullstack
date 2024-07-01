@@ -9,7 +9,7 @@ const LivroContainer = styled.div`
   align-items: center;
   border-radius: 20px;
   width: 250px;
-  background-image: linear-gradient(0deg, #fc7222 0%, #000 30%);
+  background-image: radial-gradient(#002f52, #326589);
 `;
 
 const Livro = ({ titulo, capa }) => {

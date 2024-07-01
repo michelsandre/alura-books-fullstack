@@ -8,7 +8,7 @@ const Input = styled.input`
   width: 500px;
   color: #fff;
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 
   &::placeholder {
     color: #999;

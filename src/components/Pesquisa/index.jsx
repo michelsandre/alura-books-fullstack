@@ -11,7 +11,9 @@ const PesquisaContainer = styled.section`
   color: #fff;
   text-align: center;
   padding: 3rem 0;
+  background-image: linear-gradient(90deg, #002f52 35%, #326589 100%);
 `;
+
 const Titulo = styled.h2`
   font-size: 2rem;
 `;
@@ -21,12 +23,6 @@ const Subtitulo = styled.h3`
   margin-top: 1rem;
   margin-bottom: 2rem;
 `;
-
-// display: flex;
-//   gap: 2rem;
-//   padding: 0 5rem;
-//   flex-wrap: wrap;
-//   border: 1px solid red;
 
 const LivrosContainer = styled.div`
   display: flex;
@@ -53,10 +49,7 @@ const Pesquisa = () => {
     <PesquisaContainer>
       <Titulo>Já sabe por onde começar?</Titulo>
       <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
-      <Input
-        onChange={handlePesquisa}
-        placeholder="Escreva sua próxima leitura"
-      />
+      <Input onChange={handlePesquisa} placeholder="Escreva sua próxima leitura" />
       <LivrosContainer>
         {livrosPesquisados.map((livro) => (
           <Livro titulo={livro.nome} capa={livro.src} />
