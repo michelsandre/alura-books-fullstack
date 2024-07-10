@@ -1,21 +1,27 @@
-const livros = [];
+const LivroService = require('../service/LivroService');
+
+const livroService = new LivroService();
 
 class LivroController {
-  static criaLivro(req, res) {
-    const { nome, autor } = req.body;
+  static async criarLivro(req, res) {
+    const dados = req.body;
 
-    const novoLivro = {
-      nome,
-      autor,
-    };
-
-    livros.push(novoLivro);
-    return res.status(201).send({ message: 'Livro criado', novoLivro });
+    try {
+      const novoLivro = await livroService.criarItem(dados);
+      return res.status(201).send(novoLivro);
+    } catch (error) {
+      return res.status(500).send({ message: error.message });
+    }
   }
 
-  static listaLivros(req, res) {
-    return res.status(200).send(livros);
+  static async listarLivros(req, res) {
+    try {
+      const livros = await livroService.buscarItens();
+      return res.status(200).send(livros);
+    } catch (error) {
+      return res.status(500).send({ message: error.message });
+    }
   }
 }
 
-export default LivroController;
+module.exports = LivroController;
