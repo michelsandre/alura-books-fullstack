@@ -9,12 +9,20 @@ class Services {
     return dataSource[this.model].create(data);
   }
 
+  async editarLivro(id, data) {
+    return dataSource[this.model].update(data, { where: { id } });
+  }
+
   async buscarItens() {
     return dataSource[this.model].findAll();
   }
 
   async buscarItemPorId(id) {
     return dataSource[this.model].findByPk(id);
+  }
+
+  async deletarItem(id) {
+    return dataSource[this.model].destroy({ where: { id } });
   }
 }
 
