@@ -4,12 +4,18 @@ class Services {
   constructor(modelName) {
     this.model = modelName;
   }
+  verificaId(id) {
+    if (!Number(id)) {
+      throw new Error('ID não é valido');
+    }
+  }
 
   async criarItem(data) {
     return dataSource[this.model].create(data);
   }
 
   async editarLivro(id, data) {
+    this.verificaId(id);
     return dataSource[this.model].update(data, { where: { id } });
   }
 
@@ -18,10 +24,12 @@ class Services {
   }
 
   async buscarItemPorId(id) {
+    this.verificaId(id);
     return dataSource[this.model].findByPk(id);
   }
 
   async deletarItem(id) {
+    this.verificaId(id);
     return dataSource[this.model].destroy({ where: { id } });
   }
 }

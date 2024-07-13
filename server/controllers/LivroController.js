@@ -51,7 +51,9 @@ class LivroController {
 
     try {
       await livroService.deletarItem(id);
-      return res.status(202).send({ message: `Livro id: ${id} apagado com sucesso` });
+      return res
+        .status(202)
+        .send({ message: `Livro id: ${id} apagado com sucesso` });
     } catch (error) {
       return res.status(500).send({ message: error.message });
     }
