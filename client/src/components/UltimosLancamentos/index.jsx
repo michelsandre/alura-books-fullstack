@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { livros } from './dadosUltimosLancamentos';
 import { Titulo } from '../Titulo';
+import { useState, useEffect } from 'react';
 
-import imagemLivro from '../../images/livro2.png';
 import CardRecomenda from '../CardRecomenda';
+import axios from 'axios';
 
 const LancamentosContainer = styled.section`
   background-color: #ebecee;
@@ -18,25 +18,51 @@ const NovosLivrosContainer = styled.div`
   width: 100%;
   justify-content: center;
   cursor: pointer;
+  gap: 10px;
 `;
 
 const UltimosLancamentos = () => {
+  const [lancamentos, setLancamentos] = useState([]);
+  const [recomendacao, setRecomendacao] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:8080/livros')
+      .then((res) => {
+        //Ultimos lancamentos
+        setLancamentos(res.data.slice(-3));
+
+        //Recomendação
+        const totalLivros = res.data.length;
+        setRecomendacao(res.data[Math.floor(Math.random() * totalLivros)]);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <LancamentosContainer>
-      <Titulo cor="#eb9b00" tamanhoFonte="2rem">
+      <Titulo cor="#eb9b00" tamanhofonte="2rem">
         ÚLTIMOS LANÇAMENTOS
       </Titulo>
       ;
       <NovosLivrosContainer>
-        {livros.map((livro) => (
-          <img src={livro.src} alt="livro" width="200px" />
+        {lancamentos.map((livro, i) => (
+          <img
+            src={livro.url}
+            alt="livro"
+            width="200px"
+            height="270px"
+            key={i}
+          />
         ))}
       </NovosLivrosContainer>
       <CardRecomenda
         titulo="Talvez você se interesse por"
-        subtitulo="Angular 11"
-        descricao="Construindo uma aplicação com a plataforma Google"
-        img={imagemLivro}
+        subtitulo={recomendacao.nome}
+        descricao={recomendacao.descricao}
+        img={recomendacao.url}
         margem="1rem"
       />
     </LancamentosContainer>

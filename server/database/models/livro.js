@@ -24,8 +24,19 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notNull: { msg: 'Nome do autor é obrigatório' },
+          notNull: { msg: 'Endereço da imagem obrigatoria' },
         },
+      },
+      url: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        // validate: {
+        //   notNull: { msg: 'Nome do autor é obrigatório' },
+        // },
+      },
+      descricao: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     {

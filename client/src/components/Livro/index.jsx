@@ -12,10 +12,14 @@ const LivroContainer = styled.div`
   background-image: radial-gradient(#002f52, #326589);
 `;
 
+const Titulo = styled.p`
+  min-height: 50px;
+`;
+
 const Livro = ({ titulo, capa }) => {
   return (
     <LivroContainer>
-      <p>{titulo}</p>
+      <Titulo>{titulo}</Titulo>
       <img src={capa} alt="Livro" width="200px" height="270px" />
     </LivroContainer>
   );

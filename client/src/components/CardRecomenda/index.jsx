@@ -23,7 +23,7 @@ const Button = styled.button`
   font-weight: 900;
   display: block;
   text-align: center;
-  width: 150px;
+  width: 100%;
 `;
 
 const Descricao = styled.p`
@@ -38,13 +38,14 @@ const Subtitulo = styled.h4`
 `;
 
 const ImgLivro = styled.img`
-  width: 150px;
+  width: 160px;
+  height: 216px;
 `;
 const CardRecomenda = ({ titulo, subtitulo, descricao, img, margem }) => {
   return (
     <Card margem={margem || null}>
       <div>
-        <Titulo tamanhoFonte="16px" cor="#EB9B00" alinhamento="left">
+        <Titulo tamanhofonte="16px" cor="#EB9B00" alinhamento="left">
           {titulo}
         </Titulo>
         <Subtitulo>{subtitulo}</Subtitulo>

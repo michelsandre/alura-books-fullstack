@@ -1,10 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const livrosRoute = require('./routes/livrosRoute.js');
 
 const app = express();
 const port = 8080;
 
-app.use(express.json(), livrosRoute);
+app.use(express.json(), cors(), livrosRoute);
 
 //Rota principal
 app.get('/', (req, res) => {
