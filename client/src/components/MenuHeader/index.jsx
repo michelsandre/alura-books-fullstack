@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MenuContainer = styled.ul`
@@ -28,25 +29,28 @@ const LinkContainer = styled.a`
 `;
 
 const MenuHeader = () => {
+  const navigate = useNavigate();
   const menuOpcoes = [
     {
       nome: 'Categorias',
-      url: '#',
+      url: 'categorias',
     },
     {
       nome: 'Favoritos',
-      url: '#',
+      url: 'favoritos',
     },
     {
       nome: 'Minha estante',
-      url: '#',
+      url: 'minha-estante',
     },
   ];
   return (
     <MenuContainer>
       {menuOpcoes.map((opcao) => (
         <Opcao key={opcao.nome}>
-          <LinkContainer href={opcao.url}>{opcao.nome}</LinkContainer>
+          <LinkContainer onClick={() => navigate(opcao.url)}>
+            {opcao.nome}
+          </LinkContainer>
         </Opcao>
       ))}
     </MenuContainer>

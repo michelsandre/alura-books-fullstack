@@ -3,7 +3,7 @@ import { Titulo } from '../Titulo';
 import { useState, useEffect } from 'react';
 
 import CardRecomenda from '../CardRecomenda';
-import axios from 'axios';
+import { buscarLivros } from '../../services/livros';
 
 const LancamentosContainer = styled.section`
   background-color: #ebecee;
@@ -26,19 +26,18 @@ const UltimosLancamentos = () => {
   const [recomendacao, setRecomendacao] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:8080/livros')
-      .then((res) => {
-        //Ultimos lancamentos
-        setLancamentos(res.data.slice(-3));
+    const livrosApi = async () => {
+      const response = await buscarLivros();
 
-        //Recomendação
-        const totalLivros = res.data.length;
-        setRecomendacao(res.data[Math.floor(Math.random() * totalLivros)]);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      //Ultimos lancamentos
+      setLancamentos(response.slice(-3));
+
+      //Recomendação
+      const totalLivros = response.length;
+      setRecomendacao(response[Math.floor(Math.random() * totalLivros)]);
+    };
+
+    livrosApi();
   }, []);
 
   return (
