@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import Input from '../Input';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Livro from '../Livro';
-import { buscarLivros } from '../../services/livros';
 
 //background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
 //height: 270px;
@@ -32,18 +31,8 @@ const LivrosContainer = styled.div`
   justify-content: center;
 `;
 
-const Pesquisa = () => {
+const Pesquisa = ({ livros }) => {
   const [livrosPesquisados, setLivrosPesquisados] = useState([]);
-  const [livros, setLivros] = useState([]);
-
-  useEffect(() => {
-    const livrosApi = async () => {
-      const response = await buscarLivros();
-      setLivros(response);
-    };
-
-    livrosApi();
-  }, []);
 
   const handlePesquisa = (e) => {
     const textoBusca = e.target.value.toLowerCase();
@@ -59,10 +48,7 @@ const Pesquisa = () => {
     <PesquisaContainer>
       <Titulo>Já sabe por onde começar?</Titulo>
       <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
-      <Input
-        onChange={handlePesquisa}
-        placeholder="Escreva sua próxima leitura"
-      />
+      <Input onChange={handlePesquisa} placeholder="Escreva sua próxima leitura" />
       <LivrosContainer>
         {livrosPesquisados.map((livro, i) => (
           <Livro titulo={livro.nome} capa={livro.url} key={i} />

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { Titulo } from '../Titulo';
-import { useState, useEffect } from 'react';
-
 import CardRecomenda from '../CardRecomenda';
-import { buscarLivros } from '../../services/livros';
 
 const LancamentosContainer = styled.section`
   background-color: #ebecee;
@@ -21,25 +18,7 @@ const NovosLivrosContainer = styled.div`
   gap: 10px;
 `;
 
-const UltimosLancamentos = () => {
-  const [lancamentos, setLancamentos] = useState([]);
-  const [recomendacao, setRecomendacao] = useState([]);
-
-  useEffect(() => {
-    const livrosApi = async () => {
-      const response = await buscarLivros();
-
-      //Ultimos lancamentos
-      setLancamentos(response.slice(-3));
-
-      //Recomendação
-      const totalLivros = response.length;
-      setRecomendacao(response[Math.floor(Math.random() * totalLivros)]);
-    };
-
-    livrosApi();
-  }, []);
-
+const UltimosLancamentos = ({ lancamentos, recomendacao }) => {
   return (
     <LancamentosContainer>
       <Titulo cor="#eb9b00" tamanhofonte="2rem">
@@ -48,13 +27,7 @@ const UltimosLancamentos = () => {
       ;
       <NovosLivrosContainer>
         {lancamentos.map((livro, i) => (
-          <img
-            src={livro.url}
-            alt="livro"
-            width="200px"
-            height="270px"
-            key={i}
-          />
+          <img src={livro.url} alt="livro" width="200px" height="270px" key={i} />
         ))}
       </NovosLivrosContainer>
       <CardRecomenda

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './routes/Home';
 import { createGlobalStyle } from 'styled-components';
@@ -31,15 +31,17 @@ code {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <GlobalStyle />
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/categorias" element={<p>Oi categorias</p>} />
-        <Route path="/minha-estante" element={<p>Oi Minha estante</p>} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <Suspense fallback="Loading...">
+      <GlobalStyle />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/favoritos" element={<Favoritos />} />
+          <Route path="/categorias" element={<p>Oi categorias</p>} />
+          <Route path="/minha-estante" element={<p>Oi Minha estante</p>} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   </>
 );
