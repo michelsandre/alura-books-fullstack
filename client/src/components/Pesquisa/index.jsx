@@ -51,7 +51,7 @@ const Pesquisa = ({ livros }) => {
       <Input onChange={handlePesquisa} placeholder="Escreva sua próxima leitura" />
       <LivrosContainer>
         {livrosPesquisados.map((livro, i) => (
-          <Livro titulo={livro.nome} capa={livro.url} key={i} />
+          <Livro titulo={livro.nome} capa={livro.url} key={i} favorito={livro.favorito} />
         ))}
       </LivrosContainer>
     </PesquisaContainer>

@@ -16,11 +16,40 @@ const Titulo = styled.p`
   min-height: 50px;
 `;
 
-const Livro = ({ titulo, capa }) => {
+const Button = styled.button`
+  padding: 10px 0;
+  font-size: 1rem;
+  min-width: 100px;
+  border: 1px solid #eb9b00;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eb9b00;
+    color: #000;
+  }
+
+  &:active {
+    background-color: #ffcf70;
+    color: #000;
+  }
+
+  &:disabled {
+    background-color: #777;
+    pointer-events: none;
+    border: none;
+    color: #999999;
+  }
+`;
+
+const Livro = ({ titulo, capa, favorito }) => {
   return (
     <LivroContainer>
       <Titulo>{titulo}</Titulo>
       <img src={capa} alt="Livro" width="200px" height="270px" />
+      <Button disabled={favorito}>Favorito</Button>
     </LivroContainer>
   );
 };

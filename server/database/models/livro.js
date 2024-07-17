@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      favorito: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+      },
     },
     {
       sequelize,
