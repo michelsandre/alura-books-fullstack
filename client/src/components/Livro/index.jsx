@@ -19,12 +19,13 @@ const Titulo = styled.p`
 const Button = styled.button`
   padding: 10px 0;
   font-size: 1rem;
-  min-width: 100px;
+  min-width: 80px;
   border: 1px solid #eb9b00;
   background-color: transparent;
   color: #fff;
   border-radius: 10px;
   cursor: pointer;
+  margin: 0 5px;
 
   &:hover {
     background-color: #eb9b00;
@@ -49,7 +50,10 @@ const Livro = ({ titulo, capa, favorito }) => {
     <LivroContainer>
       <Titulo>{titulo}</Titulo>
       <img src={capa} alt="Livro" width="200px" height="270px" />
-      <Button disabled={favorito}>Favorito</Button>
+      <div>
+        <Button disabled={favorito}>Favorito</Button>
+        <Button disabled={!favorito}>Remover</Button>
+      </div>
     </LivroContainer>
   );
 };

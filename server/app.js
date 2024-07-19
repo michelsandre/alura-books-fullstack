@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const livrosRoute = require('./routes/livrosRoute.js');
+const favoritosRoute = require('./routes/favoritosRoute.js');
 
 const app = express();
 const port = 8080;
 
-app.use(express.json(), cors(), livrosRoute);
+app.use(express.json(), cors(), livrosRoute, favoritosRoute);
 
 //Rota principal
 app.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Input from '../Input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Livro from '../Livro';
 
 //background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
@@ -32,7 +32,11 @@ const LivrosContainer = styled.div`
 `;
 
 const Pesquisa = ({ livros }) => {
-  const [livrosPesquisados, setLivrosPesquisados] = useState([]);
+  const [livrosPesquisados, setLivrosPesquisados] = useState(livros);
+
+  useEffect(() => {
+    setLivrosPesquisados(livros);
+  }, [livros]);
 
   const handlePesquisa = (e) => {
     const textoBusca = e.target.value.toLowerCase();
