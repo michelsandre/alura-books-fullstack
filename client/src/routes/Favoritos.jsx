@@ -21,7 +21,12 @@ const Favoritos = () => {
 
   return (
     <AppContainer>
-      <Pesquisa livros={livros} />
+      <Pesquisa
+        livros={livros}
+        titulo="Seus livros favoritos :)"
+        subtitulo="Aqui estão seus livros selecionados."
+        fetchData={fetchData}
+      />
     </AppContainer>
   );
 };

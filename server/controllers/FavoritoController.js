@@ -14,17 +14,17 @@ class FavoritoController {
   //   }
   // }
 
-  // static async editarLivro(req, res) {
-  //   const { id } = req.params;
-  //   const dados = req.body;
+  static async editarFavorito(req, res) {
+    const { id } = req.params;
+    const dados = req.body;
 
-  //   try {
-  //     await livroService.editarLivro(id, dados);
-  //     return res.status(200).send({ message: 'Livro alterado com sucesso' });
-  //   } catch (error) {
-  //     return res.status(500).send({ message: error.message });
-  //   }
-  // }
+    try {
+      await favoritoService.editarItem(id, dados);
+      return res.status(200).send({ message: 'Livro alterado com sucesso' });
+    } catch (error) {
+      return res.status(500).send({ message: error.message });
+    }
+  }
 
   static async listarFavoritos(req, res) {
     try {

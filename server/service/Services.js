@@ -14,7 +14,7 @@ class Services {
     return dataSource[this.model].create(data);
   }
 
-  async editarLivro(id, data) {
+  async editarItem(id, data) {
     this.verificaId(id);
     return dataSource[this.model].update(data, { where: { id } });
   }

@@ -31,8 +31,8 @@ const LivrosContainer = styled.div`
   justify-content: center;
 `;
 
-const Pesquisa = ({ livros }) => {
-  const [livrosPesquisados, setLivrosPesquisados] = useState(livros);
+const Pesquisa = ({ livros, titulo, subtitulo, fetchData = null }) => {
+  const [livrosPesquisados, setLivrosPesquisados] = useState([]);
 
   useEffect(() => {
     setLivrosPesquisados(livros);
@@ -50,12 +50,24 @@ const Pesquisa = ({ livros }) => {
 
   return (
     <PesquisaContainer>
-      <Titulo>Já sabe por onde começar?</Titulo>
-      <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
-      <Input onChange={handlePesquisa} placeholder="Escreva sua próxima leitura" />
+      <Titulo>{titulo}</Titulo>
+      <Subtitulo>{subtitulo}</Subtitulo>
+      <Input
+        onChange={handlePesquisa}
+        placeholder="Procure pelo título do livro"
+      />
       <LivrosContainer>
-        {livrosPesquisados.map((livro, i) => (
-          <Livro titulo={livro.nome} capa={livro.url} key={i} favorito={livro.favorito} />
+        {livrosPesquisados.map((livro) => (
+          <Livro
+            titulo={livro.nome}
+            capa={livro.url}
+            key={livro.id}
+            favorito={livro.favorito}
+            autor={livro.autor}
+            descricao={livro.descricao}
+            id={livro.id}
+            fetchData={fetchData}
+          />
         ))}
       </LivrosContainer>
     </PesquisaContainer>

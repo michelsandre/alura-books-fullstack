@@ -13,4 +13,15 @@ async function buscarFavoritos() {
   }
 }
 
-export { buscarFavoritos };
+async function editarFavorito(id, valor) {
+  try {
+    const response = await favoritosAPI.put(`/${id}`, {
+      favorito: valor,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { buscarFavoritos, editarFavorito };

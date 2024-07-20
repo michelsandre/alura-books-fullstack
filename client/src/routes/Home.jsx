@@ -26,8 +26,15 @@ const Home = () => {
 
   return (
     <AppContainer>
-      <Pesquisa livros={livros} />
-      <UltimosLancamentos lancamentos={lancamentos} recomendacao={recomendacao} />
+      <Pesquisa
+        livros={livros}
+        titulo="Já sabe por onde começar?"
+        subtitulo="Encontre seu livro em nossa estante."
+      />
+      <UltimosLancamentos
+        lancamentos={lancamentos}
+        recomendacao={recomendacao}
+      />
     </AppContainer>
   );
 };

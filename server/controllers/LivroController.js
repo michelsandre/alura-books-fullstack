@@ -19,7 +19,7 @@ class LivroController {
     const dados = req.body;
 
     try {
-      await livroService.editarLivro(id, dados);
+      await livroService.editarItem(id, dados);
       return res.status(200).send({ message: 'Livro alterado com sucesso' });
     } catch (error) {
       return res.status(500).send({ message: error.message });
